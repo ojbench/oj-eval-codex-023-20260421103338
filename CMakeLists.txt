@@ -9,13 +9,10 @@ if(NOT CMAKE_BUILD_TYPE)
   set(CMAKE_BUILD_TYPE Release)
 endif()
 
-add_executable(code
-  tests/two/code.cpp
-)
+add_executable(code main.cpp)
 
 target_include_directories(code PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
 
 if (CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
   target_compile_options(code PRIVATE -O2 -pipe -static-libgcc -static-libstdc++)
 endif()
-
