@@ -40,8 +40,8 @@ public:
     iterator operator--(int) { iterator tmp = *this; --(*this); return tmp; }
     iterator &operator--() { --index_; return *this; }
 
-    T &operator*() const { return const_cast<T &>(owner_->at(index_)); }
-    T *operator->() const noexcept { return &const_cast<T &>(owner_->at(index_)); }
+    T &operator*() const { return const_cast<T &>(owner_->data_[index_]); }
+    T *operator->() const noexcept { return &const_cast<T &>(owner_->data_[index_]); }
 
     bool operator==(const iterator &rhs) const { return owner_ == rhs.owner_ && index_ == rhs.index_; }
     bool operator==(const const_iterator &rhs) const;
@@ -76,8 +76,8 @@ public:
     const_iterator operator--(int) { const_iterator tmp = *this; --(*this); return tmp; }
     const_iterator &operator--() { --index_; return *this; }
 
-    const T &operator*() const { return owner_->at(index_); }
-    const T *operator->() const noexcept { return &owner_->at(index_); }
+    const T &operator*() const { return owner_->data_[index_]; }
+    const T *operator->() const noexcept { return &owner_->data_[index_]; }
 
     bool operator==(const const_iterator &rhs) const { return owner_ == rhs.owner_ && index_ == rhs.index_; }
     bool operator==(const iterator &rhs) const { return rhs == *this; }
